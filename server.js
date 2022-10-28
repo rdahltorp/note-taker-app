@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const api = require('./public/assets/js/index.js')
+//const api = require('./public/assets/js/index.js')
 
 const PORT = process.env.PORT || 3001;
 
@@ -13,14 +13,14 @@ app.use(express.urlencoded({ extend: true }));
 app.use(express.static('public'));
 
 // GET ROUTES
-//GET Homepage
-app.get('/', (req, res) =>
-    res.sendFile(path.join(__dirname, '/public/index.html'))
-);
-
 //GET Notes page
 app.get('/notes', (req, res) =>
     res.sendFile(path.join(__dirname, '/public/notes.html'))
+);
+
+//GET Homepage
+app.get('*', (req, res) =>
+    res.sendFile(path.join(__dirname, '/public/index.html'))
 );
 
 //APP LISTENER
