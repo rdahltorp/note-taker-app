@@ -4,10 +4,18 @@ const uuid = require('../helpers/uuid')
 
 //GET ROUTE FOR RETRIEVING NOTES
 notes.get('/', (req, res) => {
-    //NEED TO FILL IN GET CODE HERE
     console.log(`${req.method} request recived. Pulling notes form db.json`);
     //read db file and stringify it? 
-})
+    fs.readFile('./db/db.json', 'utf8', (err,data) => {
+        if(err){
+            console.log(err);
+        } else {
+            const prevNotes = JSON.parse(data);
+            console.log(prevNotes);
+            res.send(prevNotes)
+        }
+    })    
+});
 
 //POST ROUTE FOR NEW NOTE
 notes.post('/', (req, res) => {
