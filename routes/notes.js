@@ -1,5 +1,6 @@
 const notes = require('express').Router();
 const fs = require('fs');
+const uuid = require('../helpers/uuid')
 
 //GET ROUTE FOR RETRIEVING NOTES
 notes.get('/', (req, res) => {
@@ -10,7 +11,6 @@ notes.get('/', (req, res) => {
 
 //POST ROUTE FOR NEW NOTE
 notes.post('/', (req, res) => {
-    //NEED TO FILL IN POST CODE HERE
     console.info(`${req.method} request recived. Posting new note to db.json`);
     console.log(req.body);
 
@@ -20,7 +20,7 @@ notes.post('/', (req, res) => {
         const newNote = {
             title, 
             text,
-            //id: uuid() //NEED A UUID FUNCTION
+            id: uuid()
         };
 
         fs.readFile('./db/db.json', 'utf8', (err, data) => {
