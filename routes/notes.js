@@ -1,4 +1,4 @@
-const notes = require('express').Router();
+let notes = require('express').Router();
 const fs = require('fs');
 const uuid = require('../helpers/uuid')
 
@@ -63,5 +63,19 @@ notes.post('/', (req, res) => {
 });
 
 //DELETE ROUTE FOR EXISTING QUOTE
+notes.delete('/:id', (req, res) => {
+    console.info(`${req.method} request recived. Deleting note id ${req.params.id}`);
+
+    const deleteNoteId = req.params.id;
+    const newNotesArray = notes.filter((note) => note.id != deleteNoteId); //Says notes.filter is not a function. Not sure why this is an issue.
+
+    if(!newNotesArray){
+        console.log(err);
+    }else{
+        notes = newNotesArray
+        res.send(notes)
+    };
+  
+});
 
 module.exports = notes;
