@@ -21,7 +21,7 @@ For an example of the functonality see the demo below.
 
    ![alt text](./assets/images/note-taker-demo.gif)
 
-You can view a live version of the application here on Heroku: 
+You can view a live version of the application here on Heroku: https://protected-journey-05055.herokuapp.com/
 
 
 ## Credits
